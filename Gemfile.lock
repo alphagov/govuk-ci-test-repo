@@ -154,7 +154,7 @@ GEM
     ffi (1.15.5)
     filelock (1.1.1)
     find_a_port (1.0.1)
-    gds-api-adapters (79.1.2)
+    gds-api-adapters (79.2.0)
       addressable
       link_header
       null_logger
@@ -205,7 +205,7 @@ GEM
     html_tokenizer (0.0.7)
     htmlentities (4.3.4)
     http-accept (1.7.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -311,7 +311,7 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -485,7 +485,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.1)
+    unf_ext (0.0.8.2)
     unicode-display_width (2.1.0)
     unicorn (6.1.0)
       kgio (~> 2.6)
