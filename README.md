@@ -1,4 +1,4 @@
-# Collections test
+# Collections test 2
 
 Collections serves the GOV.UK navigation pages and organisation pages. Search API is used to make the pages dynamic e.g. the latest changes for Topics, Organisations and Mainstream browse pages.
 
