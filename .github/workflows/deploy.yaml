@@ -14,6 +14,8 @@ on:
     paths-ignore:
       - "Jenkinsfile"
       - ".git**"
+  release:
+    types: [published]
 
 jobs:
   build-and-publish-image:
