@@ -9,7 +9,7 @@ on:
         type: string
         default: 'main'
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   build-and-publish-image:
