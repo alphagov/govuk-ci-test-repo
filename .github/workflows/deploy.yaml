@@ -8,12 +8,6 @@ on:
         required: true
         type: string
         default: 'main'
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - "Jenkinsfile"
-      - ".git**"
   release:
     types: [published]
 
