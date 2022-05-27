@@ -1,0 +1,21 @@
+
+name: Deploy to EC2
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseTag:
+        description: 'Release Tag'
+        required: true
+        type: string
+        default: 'main'
+
+jobs:
+  deploy-to-ec2:
+    name: Build and publish image
+    uses: alphagov/govuk-infrastructure/.github/workflows/deploy-to-ec2.yaml@add-ci-workflow
+    with:
+      releaseTag: ${{ github.event.inputs.releaseTag }}
+    secrets:
+      GOVUK_CI_JENKINS_TOKEN: ${{ secrets.GOVUK_CI_JENKINS_TOKEN }}
+      GOVUK_CI_JENKINS_URL: ${{ secrets.GOVUK_CI_JENKINS_URL }}
