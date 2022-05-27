@@ -17,5 +17,6 @@ jobs:
     with:
       releaseTag: ${{ github.event.inputs.releaseTag }}
     secrets:
+      GOVUK_CI_JENKINS_USERNAME: ${{ secrets.GOVUK_CI_JENKINS_USERNAME }}
       GOVUK_CI_JENKINS_TOKEN: ${{ secrets.GOVUK_CI_JENKINS_TOKEN }}
       GOVUK_CI_JENKINS_URL: ${{ secrets.GOVUK_CI_JENKINS_URL }}
