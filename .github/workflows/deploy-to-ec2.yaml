@@ -12,7 +12,7 @@ on:
 
 jobs:
   deploy-to-ec2:
-    name: Build and publish image
+    name: Deploy to EC2
     uses: alphagov/govuk-infrastructure/.github/workflows/deploy-to-ec2.yaml@add-ci-workflow
     with:
       releaseTag: ${{ github.event.inputs.releaseTag }}
