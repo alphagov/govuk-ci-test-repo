@@ -27,4 +27,5 @@ jobs:
            -f ref='${{ github.ref }}' \
            -f description='Deploy request from CI Workflow' \
            -f environment='integration' \
+           -F required_contexts=[] \
            -F auto_merge='false'
