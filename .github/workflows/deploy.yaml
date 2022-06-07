@@ -8,8 +8,7 @@ on:
         required: true
         type: string
         default: 'main'
-  release:
-    types: [released]
+  deployment: {}
 
 jobs:
   build-and-publish-image:
