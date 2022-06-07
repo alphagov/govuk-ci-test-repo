@@ -6,20 +6,38 @@ on:
       - main
   pull_request:
 
-permissions:
-  contents: write
-
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The tests have run."
-    #uses: alphagov/govuk-infrastructure/.github/workflows/ci.yaml@add-ci-workflow
-  release:
-    name: Release
-    if: github.ref == 'refs/heads/main'
+  trigger-deploy:
+    name: Trigger deploy
     needs: test
-    uses: alphagov/govuk-infrastructure/.github/workflows/release.yaml@add-ci-workflow
-    secrets:
-      GOVUK_CI_GITHUB_API_TOKEN: ${{ secrets.GOVUK_CI_GITHUB_API_TOKEN }}
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GOVUK_CI_GITHUB_API_TOKEN }}
+    steps:
+      - name: Trigger deployment
+        id: trigger-deployment
+        run: |
+          read -r -d '' DATA << EOM
+            {
+               "ref": "${{ github.ref }}",
+               "description": "Deploy request from CI Workflow",
+               "environment": "integration",
+               "required_contexts": [],
+               "auto_merge": false
+            }
+          EOM
+          echo "$DATA" | gh api repos/${{ github.repository }}/deployments --input -
+#
+#         echo '{
+#            "ref": "${{ github.ref }}",
+#            "description": "Deploy request from CI Workflow",
+#            "environment": "integration",
+#            "required_contexts": [],
+#            "auto_merge": false
+#          }' | gh api repos/${{ github.repository }}/deployments --input -
