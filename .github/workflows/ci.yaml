@@ -17,19 +17,6 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    env:
+    uses: alphagov/govuk-infrastructure/.github/workflows/create-deployment.yaml@add-deploy-trigger-workflow
+    with:
       GITHUB_TOKEN: ${{ secrets.GOVUK_CI_GITHUB_API_TOKEN }}
-    steps:
-      - name: Trigger deployment
-        id: trigger-deployment
-        run: |
-          DATA='{ "ref": "${{ github.ref }}", "description": "Deploy request from CI Workflow", "environment": "integration", "required_contexts": [], "auto_merge": false }'
-          echo "$DATA" | gh api repos/${{ github.repository }}/deployments --input -
-#
-#         echo '{
-#            "ref": "${{ github.ref }}",
-#            "description": "Deploy request from CI Workflow",
-#            "environment": "integration",
-#            "required_contexts": [],
-#            "auto_merge": false
-#          }' | gh api repos/${{ github.repository }}/deployments --input -
