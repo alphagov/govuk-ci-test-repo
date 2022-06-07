@@ -17,5 +17,5 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main'
     uses: alphagov/govuk-infrastructure/.github/workflows/create-deployment.yaml@add-deploy-trigger-workflow
-    with:
+    secrets:
       GITHUB_TOKEN: ${{ secrets.GOVUK_CI_GITHUB_API_TOKEN }}
