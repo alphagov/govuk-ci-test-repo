@@ -23,15 +23,7 @@ jobs:
       - name: Trigger deployment
         id: trigger-deployment
         run: |
-          read -r -d '' DATA << EOM
-            {
-               "ref": "${{ github.ref }}",
-               "description": "Deploy request from CI Workflow",
-               "environment": "integration",
-               "required_contexts": [],
-               "auto_merge": false
-            }
-          EOM
+          DATA='{ "ref": "${{ github.ref }}", "description": "Deploy request from CI Workflow", "environment": "integration", "required_contexts": [], "auto_merge": false }'
           echo "$DATA" | gh api repos/${{ github.repository }}/deployments --input -
 #
 #         echo '{
