@@ -12,10 +12,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The tests have run."
-  trigger-deploy:
-    name: Trigger deploy
-    needs: test
-    if: github.ref == 'refs/heads/main'
-    uses: alphagov/govuk-infrastructure/.github/workflows/create-deployment.yaml@add-deploy-trigger-workflow
-    secrets:
-      USER_GITHUB_TOKEN: ${{ secrets.GOVUK_CI_GITHUB_API_TOKEN }}
